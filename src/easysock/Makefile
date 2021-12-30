@@ -82,12 +82,12 @@ PACKAGE = easysock
 RANLIB = ranlib
 VERSION = 0.2.0
 
-noinst_LIBRARIES = libggz.a
-libggz_a_SOURCES =  	ggz.c ggz_client.h
+noinst_LIBRARIES = libeasysock.a
+libeasysock_a_SOURCES =  	easysock.c easysock.h
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
-CONFIG_CLEAN_FILES = 
+CONFIG_CLEAN_FILES =  easysock.h
 LIBRARIES =  $(noinst_LIBRARIES)
 
 
@@ -95,35 +95,37 @@ DEFS = -DHAVE_CONFIG_H -I. -I$(srcdir) -I..
 CPPFLAGS = 
 LDFLAGS = 
 LIBS = 
-libggz_a_LIBADD = 
-libggz_a_OBJECTS =  ggz.o
+libeasysock_a_LIBADD = 
+libeasysock_a_OBJECTS =  easysock.o
 AR = ar
 CFLAGS = -g -O2
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
-DIST_COMMON =  Makefile.am Makefile.in
+DIST_COMMON =  ChangeLog Makefile.am Makefile.in TODO easysock.h.in
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = gtar
 GZIP_ENV = --best
-DEP_FILES =  .deps/ggz.P
-SOURCES = $(libggz_a_SOURCES)
-OBJECTS = $(libggz_a_OBJECTS)
+DEP_FILES =  .deps/easysock.P
+SOURCES = $(libeasysock_a_SOURCES)
+OBJECTS = $(libeasysock_a_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
 .SUFFIXES: .S .c .lo .o .s
 $(srcdir)/Makefile.in: # Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu client/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu easysock/Makefile
 
 Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
+easysock.h: $(top_builddir)/config.status easysock.h.in
+	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 mostlyclean-noinstLIBRARIES:
 
@@ -166,10 +168,10 @@ distclean-libtool:
 
 maintainer-clean-libtool:
 
-libggz.a: $(libggz_a_OBJECTS) $(libggz_a_DEPENDENCIES)
-	-rm -f libggz.a
-	$(AR) cru libggz.a $(libggz_a_OBJECTS) $(libggz_a_LIBADD)
-	$(RANLIB) libggz.a
+libeasysock.a: $(libeasysock_a_OBJECTS) $(libeasysock_a_DEPENDENCIES)
+	-rm -f libeasysock.a
+	$(AR) cru libeasysock.a $(libeasysock_a_OBJECTS) $(libeasysock_a_LIBADD)
+	$(RANLIB) libeasysock.a
 
 tags: TAGS
 
@@ -202,14 +204,14 @@ maintainer-clean-tags:
 
 distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 
-subdir = client
+subdir = easysock
 
 distdir: $(DISTFILES)
 	here=`cd $(top_builddir) && pwd`; \
 	top_distdir=`cd $(top_distdir) && pwd`; \
 	distdir=`cd $(distdir) && pwd`; \
 	cd $(top_srcdir) \
-	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu client/Makefile
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu easysock/Makefile
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  if test -d $$d/$$file; then \
