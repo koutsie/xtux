@@ -25,8 +25,10 @@
 #include "cl_netmsg_recv.h"
 #include "draw.h"
 
-#include "ggz_client.h"
-
+/* ripping out ggz
+ * -kouts
+ * #include "ggz_client.h"
+*/
 extern win_t win;
 extern client_t client;
 
@@ -34,14 +36,14 @@ netconnection_t *server; /* Connection to the server */
 
 void cl_network_init(void)
 {
-
-    if(!client.with_ggz) {
+    //if(!client.with_ggz) {
+        //UNDER_THIS
+    //} else {
+        //client.server_address = strdup("GGZ host");
+        //client.port = 0;
+    //}
         client.server_address = strdup("localhost");
         client.port = DEFAULT_PORT;
-    } else {
-        client.server_address = strdup("GGZ host");
-        client.port = 0;
-    }
 }
 
 
@@ -69,35 +71,23 @@ int cl_network_connect(char *sv_name, int port)
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
 
-    if(!client.with_ggz) {
-        sock = net_init_socket();
+    sock = net_init_socket();
 
-        if( (addr.sin_addr.s_addr = inet_addr(sv_name)) == INADDR_NONE ) {
-        if((hp = gethostbyname(sv_name)) == NULL) {
-            close(sock);
-            sock = -1;
-            return 0;
-        } else {
-            addr.sin_addr.s_addr = *(long *) hp->h_addr;
-        }
-        }
-
-        if( connect(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0 ) {
-        perror("connect");
+    if( (addr.sin_addr.s_addr = inet_addr(sv_name)) == INADDR_NONE ) {
+    if((hp = gethostbyname(sv_name)) == NULL) {
         close(sock);
         sock = -1;
         return 0;
-        }
     } else {
-        /* ggz mode */
-        signal(SIGPIPE, SIG_IGN); /* Ignore Pipe errors */
-        if( (sock = ggz_client_get_sock()) < 0 ) {
-        sock = -1;
-        return 0;
-        }
-        /* avoid perdig effect */
-        sleep(3);
+        addr.sin_addr.s_addr = *(long *) hp->h_addr;
     }
+    }
+
+    if( connect(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0 ) {
+    perror("connect");
+    close(sock);
+    sock = -1;
+    return 0;
     }
 
     switch( client.demo ) {
@@ -166,7 +156,7 @@ int cl_network_connect(char *sv_name, int port)
     return 0;
 
 }
-
+}
 
 void cl_network_disconnect(void)
 {

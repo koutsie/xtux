@@ -12,7 +12,7 @@ X11_PATH = /usr/X11R6
 
 TOPLEVEL_PATH = ../..
 COMMON_PATH = $(TOPLEVEL_PATH)/src/common
-GGZ_PATH= $(TOPLEVEL_PATH)/src/ggz/client
+#GGZ_PATH= $(TOPLEVEL_PATH)/src/ggz/client
 
 # Programs used in building process
 MAKE = make
@@ -27,13 +27,13 @@ CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
 # Paths to header files
 X11_INC = -I$(X11_PATH)/include
 COMMON_INC = -I$(COMMON_PATH)
-GGZ_INC = -I$(GGZ_PATH)
+#GGZ_INC = -I$(GGZ_PATH)
 
 # Libraries used in linking
 X11LIB = -L$(X11_PATH)/lib -lX11
 XPMLIB = -lXpm
 MATHLIB = -lm
-GGZLIB = $(GGZ_PATH)/libggz.a
+#GGZLIB = $(GGZ_PATH)/libggz.a
 
 # Common libraries
 XTUXLIB = $(COMMON_PATH)/xtuxlib.a
@@ -47,9 +47,11 @@ clean:
 	rm -f $(OBJECTS) $(BINARY)
 
 #Apps
+# bye bye $(GGZLIB)
 client: $(OBJECTS)
-	$(CC) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB) $(GGZLIB)
+	$(CC) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB)
 
 # OBJECTS
+# bye bye $(GGZ_INC)
 .c.o:	client.h $*.c
-	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC) $(X11_INC) $(GGZ_INC)
+	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC) $(X11_INC)

@@ -14,7 +14,10 @@
 #include "event.h"
 #include "game.h"
 
-#include "xtuxggz.h"
+/* ripping out ggz
+ * -kouts
+ * #include "xtuxggz.h"
+*/
 
 extern server_t server;
 extern game_t game;
@@ -70,12 +73,7 @@ int sv_netmsg_recv_join(client_t *cl, netmsg msg)
 
     server.clients++;
     cl->status = JOINING;
-    if( !server.with_ggz )
-        strncpy(cl->name, msg.join.name, NETMSG_STRLEN);
-    else
-    xtuxggz_find_ggzname(cl->nc->fd, cl->name, NETMSG_STRLEN);
-    printf(CLIENT "%s attempting to JOIN (%d clients)\n", cl->name, server.clients);
-
+    strncpy(cl->name, msg.join.name, NETMSG_STRLEN);
     if( msg.join.protocol != NETMSG_PROTOCOL_VERSION ) {
     printf(ERR "Client attempted join with wrong protocol\n");
     snprintf(buf, NETMSG_STRLEN, "Wrong protocol %d (serv = %d)",

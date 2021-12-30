@@ -17,7 +17,11 @@
 #include "cl_netmsg_send.h"
 #include "particle.h"
 #include "text_buffer.h"
+/*Ripping out the remnants of GGZ as the service
+ * is quite literally dead.
+ * - kouts
 #include "ggz_client.h"
+*/
 
 extern float sin_lookup[DEGREES]; /*  from ../common/math.c */
 extern float cos_lookup[DEGREES];
@@ -324,21 +328,22 @@ static void handle_cl_args(int argc, char *argv[])
             client.demo = DEMO_RECORD;
         }
         break;
-        case 'g':
-        client.with_ggz = 1;
-        ggz_client_init("xtux");
-        if( ggz_client_connect() < 0 ) {
-            fprintf(stderr,"Only GGZ client must call X-Tux in ggz mode\n");
-            ggz_client_quit();
-            exit(-1);
-        }
+        /* ripping out ggz
+         * -kouts */
+        //case 'g':
+        //client.with_ggz = 1;
+        //ggz_client_init("xtux");
+        //if( ggz_client_connect() < 0 ) {
+            //fprintf(stderr,"Only GGZ client must call X-Tux in ggz mode\n");
+            //ggz_client_quit();
+            //exit(-1);
+        //}
         break;
         case 'h': /* Help (default) */
         default:
         printf("usage: %s [OPTIONS]\n"
                "  -p DEMO_NAME Play demo DEMO_NAME\n"
                "  -r DEMO_NAME Record demo DEMO_NAME\n"
-               "  -g           Enable ggz mode\n"
                "  -h           Display help (this screen)\n\n"
                "This product is FREE SOFTWARE and comes with "
                "ABSOLUTELY NO WARRANTY!\n"

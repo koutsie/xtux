@@ -13,9 +13,10 @@
 #include "sv_map.h"
 #include "weapon.h"
 #include "game.h"
-
+/* ripping out ggz
+ * - kouts
 #include "xtuxggz.h"
-
+*/
 server_t server;
 map_t *map = NULL;
 
@@ -138,11 +139,6 @@ void handle_cl_args(int argc, char *argv[])
               printf(ERR "error parsing FPS switch\n");
           }
           break;
-      case 'g': /* GGZ mode */
-          server.with_ggz = 1;
-          if( xtuxggz_init() ==-1)
-              exit(-1);
-          break;
       case 'v': /* Print version number */
           printf(INFO "%s\n", VERSION);
           exit(EXIT_SUCCESS);
@@ -158,7 +154,6 @@ void handle_cl_args(int argc, char *argv[])
              "  -k FRAGS   Set fraglimit to FRAGS\n"
              "  -m MAP     select map of name MAP\n"
              "  -p PORT    use port PORT\n"
-             "  -g         enables GGZ mode\n"
              "  -v         Print version number.\n"
              "  -e         Exit after the last client leaves.\n"
              "  -h         Display help (this screen)\n\n"

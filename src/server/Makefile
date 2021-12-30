@@ -22,17 +22,18 @@ CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
 
 # Paths to header files
 COMMON_INC = -I$(COMMON_PATH)
-GGZ_INC = -I$(GGZ_PATH)/server -I$(GGZ_PATH)/easysock
+#GGZ_INC = -I$(GGZ_PATH)/server -I$(GGZ_PATH)/easysock
 
 # Libraries used in linking
 MATHLIB = -lm
 
 # Common libraries
 XTUXLIB = $(COMMON_PATH)/xtuxlib.a
-GGZLIB = $(GGZ_PATH)/server/libggzd.a $(GGZ_PATH)/easysock/libeasysock.a
+#GGZLIB = $(GGZ_PATH)/server/libggzd.a $(GGZ_PATH)/easysock/libeasysock.a
 
 # Objects to build
-OBJECTS = main.o sv_net.o sv_netmsg_recv.o sv_netmsg_send.o world.o game.o entity.o weapon.o misc.o sv_map.o ai.o hitscan.o item.o event.o xtuxggz.o
+#bye bye xtuxggz.o
+OBJECTS = main.o sv_net.o sv_netmsg_recv.o sv_netmsg_send.o world.o game.o entity.o weapon.o misc.o sv_map.o ai.o hitscan.o item.o event.o
 
 all:	server
 

@@ -19,8 +19,11 @@
 #include "sv_netmsg_send.h"
 #include "event.h"
 
+/*
+ * ripping out ggz
+ * -kouts
 #include "xtuxggz.h"
-
+*/
 #ifndef INADDR_ANY
 #define INADDR_ANY      (0x00000000)
 #endif
@@ -54,10 +57,10 @@ short sv_net_init(short port)
 {
     struct sockaddr_in addr;
 
-    if( server.with_ggz ) {
+    /*if( server.with_ggz ) {
     sock = xtuxggz_giveme_sock();
-    } else {
-        sock = net_init_socket();
+    } else { */
+    sock = net_init_socket();
     memset((char*)&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = INADDR_ANY;
@@ -76,7 +79,9 @@ short sv_net_init(short port)
         perror("listen");
         return -1;
     }
+    /*
     }
+    */
 
     /* Set server socket to nonblocking */
     fcntl(sock, F_SETFL, O_NONBLOCK);
@@ -317,15 +322,15 @@ static void sv_net_update(void)
     select(maxfd + 1, &read_fds, 0, 0, &tv);
 
     if( FD_ISSET(sock, &read_fds) ) {
-    if( server.with_ggz ) {
-        if( xtuxggz_is_sock_set(&newsock) != 1 )
-        newsock=-1;
-        else
-            fprintf(stderr,"-----NEW PLAYER----\n");
-    } else {
+    //if( server.with_ggz ) {
+        //if( xtuxggz_is_sock_set(&newsock) != 1 )
+        //newsock=-1;
+        //else
+            //fprintf(stderr,"-----NEW PLAYER----\n");
+    //} else {
         addrlen = sizeof(naddr);
         newsock = accept(sock,(struct sockaddr *)&naddr,(socklen_t *)&addrlen);
-    }
+    //}
 
     if( newsock < 0 ) {
         perror("accept");
