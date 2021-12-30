@@ -1,6 +1,4 @@
-# todo: get rid of this.
-
-
+#TODO: GET THIS OUT HERE!
 GGZ:
 ----
 
@@ -24,28 +22,28 @@ Installing the *.dsc files:
 ---------------------------
 
 In the ggz/ subdir, are two files:
-	xtuxclient.dsc	-> xtux client dsc file
-	xtux.dsc		-> xtux server dsc file
-	xtux.room		-> xtux server room file
+    xtuxclient.dsc  -> xtux client dsc file
+    xtux.dsc        -> xtux server dsc file
+    xtux.room       -> xtux server room file
 
 You must have ggz installed and the run:
 
-	ggz-config --install --fromfile=./ggz/xtuxclient.dsc	
-	cp ./ggz/xtux.dsc `ggz-config -c`/ggzd/games
-	cp ./ggz/xtux.room `ggz-config-c`/ggzd/rooms
+    ggz-config --install --fromfile=./ggz/xtuxclient.dsc
+    cp ./ggz/xtux.dsc `ggz-config -c`/ggzd/games
+    cp ./ggz/xtux.room `ggz-config-c`/ggzd/rooms
 
 
 Running:
 --------
-	You'll need to have ggz and xtux installed.
+    You'll need to have ggz and xtux installed.
 
-	run:
-		ggzd	(the ggz server)
-		ggz-gtk	(the ggz-gtk client)
+    run:
+        ggzd    (the ggz server)
+        ggz-gtk (the ggz-gtk client)
 
-		log in, enter in the Xtux room and launch xtux.
+        log in, enter in the Xtux room and launch xtux.
 
 
 Lastest patch:
 --------------
-	http://ggz.sourceforge.net/external_games
+    http://ggz.sourceforge.net/external_games

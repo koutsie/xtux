@@ -1,5 +1,4 @@
 # This is the original README, i'll try to update this when we get to it!
-- Allright, i hear words; what are they?
 
 **************************************************************************
 * For the impatient (try this first, then come back if it doesn't work)  *
