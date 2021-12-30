@@ -1,3 +1,5 @@
+[![build&enjoy](https://github.com/koutsie/xtux/actions/workflows/c-cpp.yml/badge.svg?branch=main)](https://github.com/koutsie/xtux/actions/workflows/c-cpp.yml)
+
 # This is the original README, i'll try to update this when we get to it!
 
 **************************************************************************
