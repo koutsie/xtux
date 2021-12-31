@@ -10,14 +10,15 @@
 #define VER2 30
 #define VERSION "XTux Arena client 20211230"
 
-typedef struct {
-    char name[NETMSG_STRLEN];
-    int clients;
-    int max_clients;
-    int port;
-    int fps;
-    int exit_when_empty;
-    int quit;
-    msec_t now;
-    int with_ggz;
+typedef struct
+{
+	char name[NETMSG_STRLEN];
+	int clients;
+	int max_clients;
+	int port;
+	int fps;
+	int exit_when_empty;
+	int quit;
+	msec_t now;
+	int with_ggz;
 } server_t;

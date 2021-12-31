@@ -42,68 +42,77 @@ typedef unsigned int socklen_t;
 #define MSG "\033[0;32m [chat] \033[0m"
 #define CLIENT "\033[0;34m  [client] \033[0m"
 
-typedef enum {
-    SAVETHEWORLD,
-    HOLYWAR,
-    NUM_GAME_MODES
+typedef enum
+{
+	SAVETHEWORLD,
+	HOLYWAR,
+	NUM_GAME_MODES
 } gamemode_t;
 
-typedef struct {
-    int x;
-    int y;
+typedef struct
+{
+	int x;
+	int y;
 } point;
 
-typedef struct {
-    netushort x;
-    netushort y;
+typedef struct
+{
+	netushort x;
+	netushort y;
 } shortpoint_t;
 
-typedef struct {
-    float x;
-    float y;
+typedef struct
+{
+	float x;
+	float y;
 } vector_t;
 
-typedef enum {
-  NORMAL,
-  CLASSIC
+typedef enum
+{
+	NORMAL,
+	CLASSIC
 } movemode_t;
 
 
 /* Just a general node for use in doubly linked string lists */
-typedef struct str_struct {
-    char *string;
-    struct str_struct *next;
-    struct str_struct *prev;
+typedef struct str_struct
+{
+	char *string;
+	struct str_struct *next;
+	struct str_struct *prev;
 } string_node;
 
-enum {
-    X,
-    Y,
-    NUM_DIMENSIONS
+enum
+{
+	X,
+	Y,
+	NUM_DIMENSIONS
 };
 
 /* States a client can be on the server */
-typedef enum {
-    QUITTING,
-    CONNECTING,
-    JOINING,
-    AWAY,
-    ACTIVE,
-    OBSERVER
+typedef enum
+{
+	QUITTING,
+	CONNECTING,
+	JOINING,
+	AWAY,
+	ACTIVE,
+	OBSERVER
 } sv_status_t;
 
 /* Particle effect types */
-enum {
-    P_RAILSLUG,
-    P_EXPLOSION,
-    P_BLOOD,
-    P_SHARDS,
-    P_BEAM,
-    P_MFLASH,
-    P_DRIP,
-    P_SPAWN,
-    P_TELEPORT,
-    NUM_EFFECTS
+enum
+{
+	P_RAILSLUG,
+	P_EXPLOSION,
+	P_BLOOD,
+	P_SHARDS,
+	P_BEAM,
+	P_MFLASH,
+	P_DRIP,
+	P_SPAWN,
+	P_TELEPORT,
+	NUM_EFFECTS
 };
 
 /* CHOP is faster than chomp, but doesn't check to see if the character
@@ -111,9 +120,9 @@ enum {
 #define CHOP(a) a[ strlen(a) - 1 ] = '\0'
 #define CHOMP(a) chomp(a)
 #define DFNTOSTR(a) #a
-#define MAX(a,b) (a > b? a : b)
-#define MIN(a,b) (a < b? a : b)
-#define ERR_QUIT(a,b) err_quit(a, b, VERSION, __FILE__, __LINE__)
+#define MAX(a, b) (a > b? a : b)
+#define MIN(a, b) (a < b? a : b)
+#define ERR_QUIT(a, b) err_quit(a, b, VERSION, __FILE__, __LINE__)
 
 #include "common.h"
 #include "maths.h"

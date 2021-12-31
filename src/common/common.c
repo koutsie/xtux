@@ -16,53 +16,53 @@
    from the program in which it was called */
 void err_quit(char *str, int status, char *version, char *file, int line)
 {
-    struct utsname sname;
+	struct utsname sname;
 
-    fflush(NULL); /* Flush all buffers */
-    uname(&sname);
-    fprintf(stderr, "************************************************\n"
-                "An error occured, please email David Lawrence \n"
-                "at nogoodpunk@yahoo.com with a copy of the error\n"
-            "messages & info about your system. Thankyou.\n"
-                "************************************************\n");
-    fprintf(stderr, " VERSION: %s\n", version);
-    printf(ERR "This is the original crash message, noting that,\n"
-    "David themselves has stated that XTux is ´dead¸*\n"
-    "I don't think he'd care for bug reports anymore.\n"
-    "* https://is.gd/bugdavid\n");
-    /* Print a list of system information */
-    fprintf(stderr,
-        " OS:      %9s\n"
-        " Release: %9s\n"
-        " Arch:    %9s\n",
-        sname.sysname,
-        sname.release,
-        sname.machine);
+	fflush(NULL); /* Flush all buffers */
+	uname(&sname);
+	fprintf(stderr, "************************************************\n"
+					"An error occured, please email David Lawrence \n"
+					"at nogoodpunk@yahoo.com with a copy of the error\n"
+					"messages & info about your system. Thankyou.\n"
+					"************************************************\n");
+	fprintf(stderr, " VERSION: %s\n", version);
+	printf(ERR "This is the original crash message, noting that,\n"
+		   "David themselves has stated that XTux is ´dead¸*\n"
+		   "I don't think he'd care for bug reports anymore.\n"
+		   "* https://is.gd/bugdavid\n");
+	/* Print a list of system information */
+	fprintf(stderr,
+			" OS:      %9s\n"
+			" Release: %9s\n"
+			" Arch:    %9s\n",
+			sname.sysname,
+			sname.release,
+			sname.machine);
 
-    fprintf(stderr,
-        " Error: %s (%d)\n"
-        " Exit called in %s, line: %d\n",
-        str, status,
-        file, line);
+	fprintf(stderr,
+			" Error: %s (%d)\n"
+			" Exit called in %s, line: %d\n",
+			str, status,
+			file, line);
 
-    exit(status);
+	exit(status);
 
 } /* err_quit() */
 
 
 void chomp(char *str)
 {
-    int i;
-    char *c;
+	int i;
+	char *c;
 
-    if( *str == '\0' )
-    return;
+	if (*str == '\0')
+		return;
 
-    i = strlen(str) - 1;
-    c = str + i;
+	i = strlen(str) - 1;
+	c = str + i;
 
-    if( *c == '\n' )
-    *c = '\0';
+	if (*c == '\n')
+		*c = '\0';
 
 }
 
@@ -71,46 +71,46 @@ void chomp(char *str)
    of formatting in the string, return on error */
 int str_format_count(char *str, char c)
 {
-    int i, num;
+	int i, num;
 
-    num = 0;
+	num = 0;
 
-    for( i=0 ; str[i] ; i++ ) {
-    if( str[i] == '%' ) {
-        i++;
-        if( str[i] == '%' )
-        continue;
-        else if( str[i] == c )
-        num++;
-        else
-        return -1;
-    }
-    }
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] == '%')
+		{
+			i++;
+			if (str[i] == '%')
+				continue;
+			else if (str[i] == c)
+				num++;
+			else
+				return -1;
+		}
+	}
 
-    return num;
+	return num;
 
 }
-
-
-
 
 
 /* Returns the amount of times s occurs in str */
 int string_count(char *str, char *s)
 {
-    char *ptr;
-    int num, len;
+	char *ptr;
+	int num, len;
 
 
-    if( (len = strlen(s)) == 0 ) {
-    printf("string_count: length of s == 0\n");
-    return 0;
-    }
+	if ((len = strlen(s)) == 0)
+	{
+		printf("string_count: length of s == 0\n");
+		return 0;
+	}
 
-    ptr = str;
-    for( num = 0 ; (ptr = strstr(ptr, s)) != NULL ; num++ )
-    ptr += len;
+	ptr = str;
+	for (num = 0; (ptr = strstr(ptr, s)) != NULL; num++)
+		ptr += len;
 
-    return num;
+	return num;
 
 }
