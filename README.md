@@ -14,4 +14,4 @@
 ### Original game description:
 XTux is a multiplayer Gauntlet-style arcade game for X-windows featuring open-source mascots. XTux runs on Linux, FreeBSD, Solaris, AIX, Irix and other unix-like systems, so players can come together from different platforms to compete in network Holywar deathmatches or work together to take on the evil Microsoft empire. Read the single player story to understand why we must fight!
 
-###### Original readme at <https://github.com/koutsie/xtux/og.md>.
+###### Original readme at <https://github.com/koutsie/xtux/blob/main/og.md>.
