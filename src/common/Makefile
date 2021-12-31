@@ -1,7 +1,9 @@
 # Makefile for stuff that's common between server & client.
 
 CC	= gcc
-CFLAGS	= -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
+# adding some flags to better society ig:     \/
+CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\" -fPIE -fstack-protector-strong -D_FORTIFY_SOURCE=2
+
 AR	= ar
 RANLIB	= ranlib
 

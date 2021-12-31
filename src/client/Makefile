@@ -7,12 +7,13 @@
 X11_PATH = /usr/X11R6
 
 #uncomment for Solaris (what is the OSTYPE variable?)
+#TODO: what?
+#      -kouts
 #SOCKLIB = -lsocket -lnsl
 
 
 TOPLEVEL_PATH = ../..
 COMMON_PATH = $(TOPLEVEL_PATH)/src/common
-#GGZ_PATH= $(TOPLEVEL_PATH)/src/ggz/client
 
 # Programs used in building process
 MAKE = make
@@ -22,18 +23,18 @@ CC = gcc
 BINARY = $(TOPLEVEL_PATH)/xtux
 
 # Flags used when compiling
-CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
+# adding some flags to better society ig:     \/
+CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\" -fPIE -fstack-protector-strong -D_FORTIFY_SOURCE=2
+LDFLAGS= -Wl,-z,now -Wl,-z,relro
 
 # Paths to header files
 X11_INC = -I$(X11_PATH)/include
 COMMON_INC = -I$(COMMON_PATH)
-#GGZ_INC = -I$(GGZ_PATH)
 
 # Libraries used in linking
 X11LIB = -L$(X11_PATH)/lib -lX11
 XPMLIB = -lXpm
 MATHLIB = -lm
-#GGZLIB = $(GGZ_PATH)/libggz.a
 
 # Common libraries
 XTUXLIB = $(COMMON_PATH)/xtuxlib.a
@@ -46,12 +47,8 @@ all:	client
 clean:
 	rm -f $(OBJECTS) $(BINARY)
 
-#Apps
-# bye bye $(GGZLIB)
 client: $(OBJECTS)
-	$(CC) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB)
+	$(CC) -o $(BINARY) $(CFLAGS) $(LDFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB)
 
-# OBJECTS
-# bye bye $(GGZ_INC)
 .c.o:	client.h $*.c
 	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC) $(X11_INC)

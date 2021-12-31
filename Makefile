@@ -13,19 +13,14 @@ MFLAGS = DATADIR=$(DATADIR)
 CM_SRC_DIR = src/common
 SV_SRC_DIR = src/server
 CL_SRC_DIR = src/client
-#GZ_SRC_DIR = src/ggz
 
 MAKE = @make -C
-# TODO: get "ggz" removed from source tree because service is dead
-# TODO: Remove all old "ggz" defs
-# - kouts     \/
 all:	common client server
 
 clean:
 	$(MAKE) $(CM_SRC_DIR) clean
 	$(MAKE) $(SV_SRC_DIR) clean
 	$(MAKE) $(CL_SRC_DIR) clean
-	#$(MAKE) $(GZ_SRC_DIR) clean
 
 common:
 	@echo
@@ -43,10 +38,3 @@ client:
 	@echo "    *************   Building CLIENT   *************"
 	@echo
 	$(MAKE) $(CL_SRC_DIR) $(MFLAGS)
-
-#ggz:
-#	@echo
-#	@echo "    *************   Building GGZ   *************"
-#	@echo
-#	$(MAKE) $(GZ_SRC_DIR) $(MFLAGS)
-

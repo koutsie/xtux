@@ -9,7 +9,6 @@
 # PATHS
 TOPLEVEL_PATH = ../..
 COMMON_PATH = $(TOPLEVEL_PATH)/src/common
-GGZ_PATH= $(TOPLEVEL_PATH)/src/ggz
 
 # Programs used in building process
 CC = gcc
@@ -18,21 +17,20 @@ CC = gcc
 BINARY = $(TOPLEVEL_PATH)/tux_serv
 
 # Flags used when compiling
-CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
+# adding some flags to better society ig:     \/
+CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\" -fPIE -fstack-protector-strong -D_FORTIFY_SOURCE=2
+
 
 # Paths to header files
 COMMON_INC = -I$(COMMON_PATH)
-#GGZ_INC = -I$(GGZ_PATH)/server -I$(GGZ_PATH)/easysock
 
 # Libraries used in linking
 MATHLIB = -lm
 
 # Common libraries
 XTUXLIB = $(COMMON_PATH)/xtuxlib.a
-#GGZLIB = $(GGZ_PATH)/server/libggzd.a $(GGZ_PATH)/easysock/libeasysock.a
 
 # Objects to build
-#bye bye xtuxggz.o
 OBJECTS = main.o sv_net.o sv_netmsg_recv.o sv_netmsg_send.o world.o game.o entity.o weapon.o misc.o sv_map.o ai.o hitscan.o item.o event.o
 
 all:	server
