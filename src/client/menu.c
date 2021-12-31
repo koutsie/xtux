@@ -8,10 +8,9 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-/* TODO: work on this later
+/* TODO: work on this later, but maybe with SDL??
+ * #include <soxr.h>
  * - kouts */
-
-#include <soxr.h>
 
 #include "xtux.h"
 #include "client.h"

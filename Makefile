@@ -17,6 +17,7 @@ CL_SRC_DIR = src/client
 
 MAKE = @make -C
 # TODO: get "ggz" removed from source tree because service is dead
+# TODO: Remove all old "ggz" defs
 # - kouts     \/
 all:	common client server
 
