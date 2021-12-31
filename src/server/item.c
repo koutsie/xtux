@@ -95,8 +95,7 @@ void item_collision(entity *item, entity *ent)
 				{
 					ent->powerup_expire[it->item_powerup] = server.now;
 				}
-				ent->powerup_expire[it->ite
-				m_powerup] += it->item_value * M_SEC;
+				ent->powerup_expire[it->item_powerup] += it->item_value * M_SEC;
 				/* Specific item powers */
 				switch (it->item_powerup)
 				{
