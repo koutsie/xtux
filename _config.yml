@@ -1,2 +1,11 @@
-remote_theme: broccolini/swiss
-theme_color: black
+remote_theme: "dracula/gh-pages"
+show_header: false
+show_downloads: false
+tagline: Quality of life update to a 20+ year old game
+description: Quality of life update to a 20+ year old game
+url: https://github.com/koutsie/xtux
+twitter: https://twitter.com/notkoutsie
+github:
+  owner_name: koutsie
+  owner_url: https://github.com/koutsie
+  repository_url: https://github.com/koutsie/xtux
