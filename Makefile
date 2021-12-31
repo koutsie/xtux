@@ -7,7 +7,7 @@
 #Change this to where you want to put the data directory.
 DATADIR = data
 #Eg you might want to put the data files here......
-DATADIR = /usr/share/games/xtux
+#DATADIR = /usr/share/games/xtux
 
 MFLAGS = DATADIR=$(DATADIR)
 CM_SRC_DIR = src/common
