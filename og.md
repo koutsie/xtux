@@ -1,3 +1,4 @@
+<pre>
 **************************************************************************
 * For the impatient (try this first, then come back if it doesn't work)  *
 **************************************************************************
@@ -64,3 +65,4 @@ You will need to close and reload the program for the new values to have an
 effect. Have fun!
 
 A link to the XTux-devel mailing list is on http://xtux.sourceforge.net
+</pre>
