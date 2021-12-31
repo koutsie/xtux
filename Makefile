@@ -5,7 +5,7 @@
 #============================================================#
 
 #Change this to where you want to put the data directory.
-DATADIR = data
+DATADIR = ./data
 #Eg you might want to put the data files here......
 #DATADIR = /usr/share/games/xtux
 
