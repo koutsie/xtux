@@ -1,5 +1,6 @@
 [![build&enjoy](https://github.com/koutsie/xtux/actions/workflows/c-cpp.yml/badge.svg?branch=main)](https://github.com/koutsie/xtux/actions/workflows/c-cpp.yml)
 [![CodeQL](https://github.com/koutsie/xtux/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/koutsie/xtux/actions/workflows/codeql-analysis.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/koutsie/xtux/badge)](https://www.codefactor.io/repository/github/koutsie/xtux)
 
 # XTux 
 #### But with widescreen, in the future hopefully sound & maybe even sdl if we get there?
