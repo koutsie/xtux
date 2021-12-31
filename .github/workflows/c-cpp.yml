@@ -1,6 +1,5 @@
 name: build&enjoy
 
-
 on:
   push:
     branches: [ main ]
@@ -24,5 +23,4 @@ jobs:
         path: | 
           xtux
           tux_serv
-        
-    
+          data/
